@@ -697,7 +697,7 @@
 
 // Enable this feature if all enabled endstop pins are interrupt-capable.
 // This will remove the need to poll the interrupt pins, saving many CPU cycles.
-//#define ENDSTOP_INTERRUPTS_FEATURE
+#define ENDSTOP_INTERRUPTS_FEATURE  // mgc E BLTouch leveling
 
 /**
  * Endstop Noise Threshold
@@ -875,8 +875,8 @@
  * Use G29 repeatedly, adjusting the Z height at each point with movement commands
  * or (with LCD_BED_LEVELING) the LCD controller.
  */
-#define PROBE_MANUALLY  // mgc E manual leveling
-#define MANUAL_PROBE_START_Z 0.23 // mgc E&C to thickness of paper used for manual leveling
+//#define PROBE_MANUALLY  // mgc D BLTouch leveling
+//#define MANUAL_PROBE_START_Z 0.23 // mgc D BLTouch leveling.thickness of paper used for manual leveling
 
 /**
  * A Fix-Mounted Probe either doesn't deploy or needs manual deployment.
@@ -899,7 +899,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH // mgc E for BLTouch leveling
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -986,14 +986,14 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }  // mgc C from 10,10,0 for manual leveling
+#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }  // mgc C from 10,10,0 for BLTouch leveling
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-#define PROBING_MARGIN 10
+#define PROBING_MARGIN 25 // mgc C for BLtouch leveling. Clearance for BLTouch from edge where clips are.
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (133*60)
+#define XY_PROBE_SPEED (100*60) // mgc C from 133*60 for BLTouch leveling
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1039,7 +1039,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-//#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define Z_MIN_PROBE_REPEATABILITY_TEST  // mgc E BLTouch leveling
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1234,15 +1234,15 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+#define AUTO_BED_LEVELING_BILINEAR  // mgc E for BLTouch leveling
 //#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING // mgc E for manual leveling
+//#define MESH_BED_LEVELING // mgc D for BLTouch leveling
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-#define RESTORE_LEVELING_AFTER_G28  // mgc E for manual leveling
+#define RESTORE_LEVELING_AFTER_G28  // mgc E for BLTouch leveling
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1281,7 +1281,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 5 // mgc C from 3 for manual leveling
+  #define GRID_MAX_POINTS_X 3 // mgc C from 3 for BLTouch leveling
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1341,7 +1341,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-#define LCD_BED_LEVELING // mgc E for manual leveling
+//#define LCD_BED_LEVELING // mgc D for BLTouch leveling
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
@@ -1385,7 +1385,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing.
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING // mgc E for BLTouch leveling
 
 #if ENABLED(Z_SAFE_HOMING)
   #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
