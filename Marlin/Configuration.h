@@ -986,7 +986,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }  // mgc C from 10,10,0 for BLTouch leveling
+#define NOZZLE_TO_PROBE_OFFSET { -44.5, -6, 0 }  // mgc C from 10,10,0 for BLTouch leveling
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
