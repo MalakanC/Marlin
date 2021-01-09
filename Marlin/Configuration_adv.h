@@ -397,7 +397,7 @@
  */
 #define USE_CONTROLLER_FAN  // mgc E
 #if ENABLED(USE_CONTROLLER_FAN)
-  #define CONTROLLER_FAN_PIN 27 // mgc E&C from -1        // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN PC7 // mgc E&C from -1        // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN_USE_Z_ONLY    // With this option only the Z axis is considered
   //#define CONTROLLER_FAN_IGNORE_Z      // Ignore Z stepper. Useful when stepper timeout is disabled.
   #define CONTROLLERFAN_SPEED_MIN      0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
